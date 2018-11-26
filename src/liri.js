@@ -1,10 +1,11 @@
-require("dotenv").config();
+require('dotenv').config();
 var keys = require('./keys');
 var Spotify = require('node-spotify-api');
-var spotify = new Spotify(keys.spotify);
-var omdbAPIKey = keys.omdb.apiKey;
 var fs = require('fs');
 var request = require('request');
+
+var spotify = new Spotify(keys.spotify);
+var omdbAPIKey = keys.omdb.apiKey;
 
 const commandFilePath = './random.txt';
 
@@ -12,9 +13,6 @@ const {
     2: command,
     3: params
 } = process.argv
-
-console.log(command);
-console.log(params);
 
 run(command, params);
 
@@ -42,7 +40,9 @@ function run(command, params) {
 
         request(bandsUrl, (error, response, body) => {
                 console.log('body:', body);
-                // console.log('props:', body[0]);
+                // console.log('body.Artists:', body.Artists)
+
+                //  console.log('props:', body[0]);
                 // console.log('JSON.parse(body):', JSON.parse(body))
                 // let newBody = JSON.parse(body);
                 // console.log('newBody:', newBody)
@@ -73,6 +73,8 @@ function run(command, params) {
                     Ratings,
                 } = data;
 
+fn(data,'')
+
                 console.log("Title: ", Title);
                 console.log("Year: ", Year);
                 console.log("IMDB rating: ", imdbRating);
@@ -100,6 +102,9 @@ function run(command, params) {
                     items
                 } = data.tracks;
 
+                console.log('href:', href);
+                console.log('items[0]:', items[0]);
+
                 const {
                     artists,
                     name: songName,
@@ -107,15 +112,10 @@ function run(command, params) {
                     album,
                 } = items;
 
-                console.log('items only: ', items);
-                // console.log('href only', href);
-
-
-                // console.log('album?', items)
-                // console.log('Artists', artists);
-                // console.log('Song Name', songName);
-                // console.log('Preview URL', previewUrl);
-                // console.log('Album', album);
+                console.log('Artists', artists);
+                console.log('Song Name', songName);
+                console.log('Preview URL', previewUrl);
+                console.log('Album', album);
 
             })
             .catch(err => console.log(err));
@@ -134,4 +134,13 @@ function run(command, params) {
             run(command, params);
         });
     }
+}
+
+function fn(obj, key) {
+    var res = [];
+    _.forEach(obj, function (v) {
+        if (typeof (v == "object") && (v = fn(v, key)).length)
+            res.push.apply(res, v);
+    });
+    return res;
 }

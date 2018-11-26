@@ -73,7 +73,7 @@ function run(command, params) {
                     Ratings,
                 } = data;
 
-fn(data,'')
+                // fn(data,'')
 
                 console.log("Title: ", Title);
                 console.log("Year: ", Year);

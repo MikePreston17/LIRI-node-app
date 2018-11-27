@@ -108,20 +108,18 @@ function run(command, params) {
                     items
                 } = data.tracks;
 
-                console.log('href:', href);
-                console.log('items[0]:', items[0]);
-
                 const {
                     artists,
                     name: songName,
                     preview_url: previewUrl,
                     album,
-                } = items;
+                } = items[0];
 
-                console.log('Artists', artists);
-                console.log('Song Name', songName);
-                console.log('Preview URL', previewUrl);
-                console.log('Album', album);
+                console.log('Artists: ', artists.map(artist => artist.name)
+                    .reduce((s, a) => s + ", " + a));
+                console.log('Song Name: ', songName);
+                console.log('Preview URL: ', previewUrl);
+                console.log('Album: ', album.name);
 
             })
             .catch(err => console.log(err));

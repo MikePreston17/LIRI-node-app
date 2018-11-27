@@ -18,7 +18,7 @@ const {
 run(command, params);
 
 function run(command, params) {
-    // console.log('running command: ', command)
+
     switch (command) {
 
         case "concert-this":
@@ -95,7 +95,7 @@ function run(command, params) {
     }
 
     function searchSpotify(searchTitle) {
-        console.log(`Searching for song '${searchTitle}'`);
+
         spotify
             .search({
                 type: 'track',
@@ -130,11 +130,12 @@ function run(command, params) {
         fs.readFile(commandFilePath, 'utf8', (err, data) => {
             if (err)
                 throw err;
-            // console.log('readfile result', data);
+
             let {
                 0: command,
                 1: params
             } = data.split(',').map(s => s.trim());
+
             run(command, params);
         });
     }

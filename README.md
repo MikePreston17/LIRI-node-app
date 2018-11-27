@@ -18,25 +18,25 @@ do-what-it-says |  reads the local file 'random.txt' and executes the command st
 
 **Band Search:**
 
-```node liri concert-this 'Weird Al' ```
+$```node liri concert-this 'Weird Al' ```
 
 ![Band Search](https://github.com/MikePreston17/LIRI-node-app/blob/master/assets/screenies/band-search.png)
 
 **A Single Artist:**
 
-```node liri spotify-this-song 'Africa' ```
+$```node liri spotify-this-song 'Africa' ```
 
 ![Single Artists](https://github.com/MikePreston17/LIRI-node-app/blob/master/assets/screenies/spotify-search.png)
 
 **Multiple Artists:**
 
-```node liri spotify-this-song 'Pump It' ```
+$```node liri spotify-this-song 'Pump It' ```
 
 ![Multiple Artists](https://github.com/MikePreston17/LIRI-node-app/blob/master/assets/screenies/spotify-search_2.png)
 
 **Movie Search:**
 
-```node liri movie-this 'The Matrix' ```
+$```node liri movie-this 'The Matrix' ```
 
 ![Movie](https://github.com/MikePreston17/LIRI-node-app/blob/master/assets/screenies/movie-search.png)
 

@@ -18,8 +18,7 @@ do-what-it-says |  reads the local file 'random.txt' and executes the command st
 
 **Band Search:**
 
-$```node
-node liri concert-this 'Weird Al' ```
+$```node liri concert-this 'Weird Al' ```
 
 ![Band Search](https://github.com/MikePreston17/LIRI-node-app/blob/master/assets/screenies/band-search.png)
 

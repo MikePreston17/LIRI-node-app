@@ -40,6 +40,8 @@ $```node liri movie-this 'The Matrix' ```
 
 ![Movie](https://github.com/MikePreston17/LIRI-node-app/blob/master/assets/screenies/movie-search.png)
 
+**Local File Commands**
+
 $`node liri do-what-it-says`
 
 ![Random Command](https://github.com/MikePreston17/LIRI-node-app/blob/master/assets/screenies/do-what-it-says.png)

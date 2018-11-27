@@ -34,7 +34,7 @@ function run(command, params) {
             runLocalCommands();
             break;
         default:
-
+            console.log(command ? `${command} is not a valid command!` : 'No command entered!')
             break;
     }
 

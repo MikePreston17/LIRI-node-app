@@ -9,7 +9,7 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
 
 Command | What it does
 ------------- | ------------
-`concert-this '<band/artist>'` |  looks up an artist or band and returns concert times
+`concert-this '<band/artist>'` |  looks up an artist or band and returns concert information
 `movie-this '<band/artist>'` |  looks up a movie and returns the details
 `spotify-this-song '<song name>'` |  looks up a song and returns the details
 `do-what-it-says` |  reads the local file 'random.txt' and executes the command stored within

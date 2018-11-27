@@ -7,4 +7,4 @@ exports.omdb = {
     apiKey: 'e601d7cf'
 }
 
-console.log('exports.spotify:', exports.spotify)
+// console.log('exports.spotify:', exports.spotify)

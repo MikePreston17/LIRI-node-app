@@ -3,6 +3,7 @@ var keys = require('./keys');
 var Spotify = require('node-spotify-api');
 var fs = require('fs');
 var request = require('request');
+var moment = require('moment');
 
 var spotify = new Spotify(keys.spotify);
 var omdbAPIKey = keys.omdb.apiKey;
@@ -17,7 +18,7 @@ const {
 run(command, params);
 
 function run(command, params) {
-    console.log('running command: ', command)
+    // console.log('running command: ', command)
     switch (command) {
 
         case "concert-this":
@@ -32,6 +33,9 @@ function run(command, params) {
         case "do-what-it-says":
             runLocalCommands();
             break;
+        default:
+
+            break;
     }
 
     function bandSearch(artist) {
@@ -39,17 +43,21 @@ function run(command, params) {
         let bandsUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
 
         request(bandsUrl, (error, response, body) => {
-                console.log('body:', body);
-                // console.log('body.Artists:', body.Artists)
 
-                //  console.log('props:', body[0]);
-                // console.log('JSON.parse(body):', JSON.parse(body))
-                // let newBody = JSON.parse(body);
-                // console.log('newBody:', newBody)
-                // for (let [key, value] in Object.entries(body)) {
-                //     console.log(`key ${key}:`, value);
-                // }
-                // console.log('newBody.venue:', newBody.offers)
+                let data = JSON.parse(body)[0];
+
+                let {
+                    name: venue,
+                    city,
+                } = data.venue;
+
+                let {
+                    datetime: date
+                } = data;
+
+                console.log('Venue:', venue);
+                console.log('Venue Location:', city);
+                console.log('Date of the Event:', moment(date).format('MMMM Do YYYY, h:mm:ss a'));
             })
             .on('error', err => console.log(err))
     }
@@ -60,7 +68,7 @@ function run(command, params) {
         request(omdbUrl, (error, response, body) => {
                 if (error) throw error;
 
-                let data = JSON.parse(body)
+                let data = JSON.parse(body);
 
                 const {
                     Title,
@@ -72,8 +80,6 @@ function run(command, params) {
                     Plot,
                     Ratings,
                 } = data;
-
-                // fn(data,'')
 
                 console.log("Title: ", Title);
                 console.log("Year: ", Year);
@@ -136,11 +142,10 @@ function run(command, params) {
     }
 }
 
-function fn(obj, key) {
-    var res = [];
-    _.forEach(obj, function (v) {
-        if (typeof (v == "object") && (v = fn(v, key)).length)
-            res.push.apply(res, v);
-    });
-    return res;
+Object.prototype.print = function () {
+    for (var key in this) {
+        if (this.hasOwnProperty(key)) {
+            console.log(key + " -> " + this[key]);
+        }
+    }
 }
